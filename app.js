@@ -12,6 +12,7 @@ app.use(express.json());
 app.use("/api", apiRoutes);
 app.use("/api/characters", charactersRoutes);
 app.use("/api/creatures", creaturesRoutes);
+app.use("/api/items", itemsRoutes);
 app.use("/api/quests", questsRoutes);
 
 module.exports = app;
