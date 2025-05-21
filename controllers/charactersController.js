@@ -3,7 +3,7 @@ const characterRepository = require("../repositories/characterRepository");
 exports.allCharacters = async (req, res) => {
   try {
     const characters = await characterRepository.getAllCharacters();
-    res.json({ characters });
+    res.json(characters);
   } catch (err) {
     console.error("Erreur dans le controller :", err);
     res.status(500).json({ error: "Internal Server Error" });

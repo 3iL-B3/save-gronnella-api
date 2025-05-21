@@ -26,10 +26,12 @@ const User = UserModel(sequelize);
 
 Character.belongsToMany(Spell, {
   through: "character_spells",
+  as: "spells",
   timestamps: false,
 });
 Spell.belongsToMany(Character, {
   through: "character_spells",
+  as: "characters",
   timestamps: false,
 });
 

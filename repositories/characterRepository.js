@@ -4,6 +4,7 @@ const getAllCharacters = async () => {
   return await Character.findAll({
     include: {
       model: Spell,
+      as: "spells",
       through: { attributes: [] },
     },
   });

@@ -1,5 +1,6 @@
 const express = require("express");
 const path = require("path");
+const cors = require("cors");
 const apiRoutes = require("./routes/apiRoutes");
 const charactersRoutes = require("./routes/charactersRoutes");
 const creaturesRoutes = require("./routes/creaturesRoutes");
@@ -11,6 +12,7 @@ const gameRoutes = require("./routes/gameRoutes");
 
 const app = express();
 
+app.use(cors());
 app.use(express.json());
 app.use("/public", express.static(path.join(__dirname, "public")));
 
