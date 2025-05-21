@@ -8,7 +8,7 @@ module.exports = async ({ Character }) => {
       manaMax: 0,
       damage: 18,
       defense: 30,
-      fortune: 75,
+      fortuneBase: 75,
     },
     {
       name: "Archibald Fumebarbe",
@@ -18,7 +18,7 @@ module.exports = async ({ Character }) => {
       manaMax: 200,
       damage: 8,
       defense: 8,
-      fortune: 200,
+      fortuneBase: 200,
     },
     {
       name: "Lunéria Pluie-d’Argent",
@@ -28,7 +28,7 @@ module.exports = async ({ Character }) => {
       manaMax: 100,
       damage: 16,
       defense: 18,
-      fortune: 150,
+      fortuneBase: 150,
     },
     {
       name: "Snargle Fignetteur",
@@ -38,7 +38,7 @@ module.exports = async ({ Character }) => {
       manaMax: 80,
       damage: 14,
       defense: 20,
-      fortune: 250,
+      fortuneBase: 250,
     },
   ];
 

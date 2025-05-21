@@ -1,52 +1,40 @@
 const { DataTypes } = require("sequelize");
 
 module.exports = (sequelize) => {
-  const Character = sequelize.define(
-    "Character",
+  const PlayerCharacter = sequelize.define(
+    "PlayerCharacter",
     {
       id: {
         type: DataTypes.INTEGER,
         primaryKey: true,
         autoIncrement: true,
       },
-      name: {
-        type: DataTypes.STRING,
-        allowNull: false,
-      },
-      class: {
-        type: DataTypes.STRING,
-        allowNull: false,
-      },
-      picture: {
-        type: DataTypes.STRING,
-        allowNull: true,
-      },
-      healthMax: {
+      userId: {
         type: DataTypes.INTEGER,
         allowNull: false,
       },
-      manaMax: {
+      characterId: {
         type: DataTypes.INTEGER,
         allowNull: false,
       },
-      damage: {
+      health: {
         type: DataTypes.INTEGER,
         allowNull: false,
       },
-      defense: {
+      mana: {
         type: DataTypes.INTEGER,
         allowNull: false,
       },
-      fortuneBase: {
+      fortune: {
         type: DataTypes.INTEGER,
         allowNull: false,
       },
     },
     {
-      tableName: "characters",
+      tableName: "player_characters",
       timestamps: false,
     }
   );
 
-  return Character;
+  return PlayerCharacter;
 };

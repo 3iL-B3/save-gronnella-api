@@ -7,6 +7,7 @@ const itemsRoutes = require("./routes/itemsRoutes");
 const questsRoutes = require("./routes/questsRoutes");
 const spellsRoutes = require("./routes/spellsRoutes");
 const authRoutes = require("./routes/authRoutes");
+const gameRoutes = require("./routes/gameRoutes");
 
 const app = express();
 
@@ -20,5 +21,6 @@ app.use("/api/items", itemsRoutes);
 app.use("/api/quests", questsRoutes);
 app.use("/api/spells", spellsRoutes);
 app.use("/api/auth", authRoutes);
+app.use("/api/game", gameRoutes);
 
 module.exports = app;
