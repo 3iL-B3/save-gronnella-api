@@ -8,6 +8,7 @@ const {
   Spell,
   Combat,
   CombatEnemy,
+  User
 } = require("../models");
 
 const load = async () => {
@@ -21,6 +22,7 @@ const load = async () => {
     Spell,
     Combat,
     CombatEnemy,
+    User
   };
 
   const fixtureFiles = [
@@ -32,6 +34,7 @@ const load = async () => {
     "combats.js",
     "charactersSpells.js",
     "creaturesSpells.js",
+    "users.js",
   ];
 
   for (const file of fixtureFiles) {
