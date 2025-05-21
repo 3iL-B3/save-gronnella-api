@@ -19,7 +19,12 @@ module.exports = async (req, res, next) => {
     if (!user)
       return res.status(401).json({ error: "Utilisateur introuvable" });
 
-    req.user = { id: user.id, email: user.email };
+    req.user = {
+      id: user.id,
+      email: user.email,
+      createdAt: user.createdAt,
+      updatedAt: user.updatedAt,
+    };
     next();
   } catch (err) {
     console.error("Erreur auth :", err);

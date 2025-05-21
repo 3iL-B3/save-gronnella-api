@@ -4,7 +4,7 @@ const { sequelize } = require("./models");
 const PORT = process.env.PORT || 3000;
 
 sequelize
-  .sync({ alter: true })
+  .sync()
   .then(() => {
     console.log("🧬 Database synced");
     app.listen(PORT, () => {

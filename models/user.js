@@ -22,10 +22,18 @@ module.exports = (sequelize) => {
         type: DataTypes.STRING,
         allowNull: false,
       },
+      createdAt: {
+        type: DataTypes.DATE,
+        allowNull: false,
+      },
+      updatedAt: {
+        type: DataTypes.DATE,
+        allowNull: false,
+      },
     },
     {
       tableName: "users",
-      timestamps: false,
+      timestamps: true,
       hooks: {
         beforeCreate: async (user) => {
           const salt = await bcrypt.genSalt(10);
