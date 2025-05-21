@@ -1,9 +1,11 @@
 const { Sequelize } = require("sequelize");
 const CharacterModel = require("./character");
 const CreatureModel = require("./creature");
-const ItemModel = require("./item");
+const PotionModel = require("./potion");
 const QuestModel = require("./quest");
 const SpellModel = require("./spell");
+const CombatModel = require("./combat");
+const CombatEnemyModel = require("./combatEnemy");
 const UserModel = require("./user");
 
 const sequelize = new Sequelize({
@@ -13,9 +15,11 @@ const sequelize = new Sequelize({
 
 const Character = CharacterModel(sequelize);
 const Creature = CreatureModel(sequelize);
-const Item = ItemModel(sequelize);
+const Potion = PotionModel(sequelize);
 const Quest = QuestModel(sequelize);
 const Spell = SpellModel(sequelize);
+const Combat = CombatModel(sequelize);
+const CombatEnemy = CombatEnemyModel(sequelize);
 const User = UserModel(sequelize);
 
 Character.belongsToMany(Spell, {
@@ -36,14 +40,37 @@ Spell.belongsToMany(Creature, {
   timestamps: false,
 });
 
+Combat.belongsTo(Quest, {
+  foreignKey: "questId",
+  as: "quest",
+});
+
+Combat.belongsToMany(Creature, {
+  through: CombatEnemy,
+  as: "ennemies",
+  foreignKey: "combatId",
+  otherKey: "creatureId",
+  timestamps: false,
+});
+
+Creature.belongsToMany(Combat, {
+  through: CombatEnemy,
+  as: "combats",
+  foreignKey: "creatureId",
+  otherKey: "combatId",
+  timestamps: false,
+});
+
 const db = {
   sequelize,
   Sequelize,
   Character,
   Creature,
-  Item,
+  Potion,
   Quest,
   Spell,
+  Combat,
+  CombatEnemy,
   User,
 };
 

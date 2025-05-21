@@ -1,8 +1,8 @@
 const { DataTypes } = require("sequelize");
 
 module.exports = (sequelize) => {
-  const Item = sequelize.define(
-    "Item",
+  const Potion = sequelize.define(
+    "Potion",
     {
       id: {
         type: DataTypes.INTEGER,
@@ -31,10 +31,10 @@ module.exports = (sequelize) => {
       },
     },
     {
-      tableName: "items",
+      tableName: "potions",
       timestamps: false,
     }
   );
 
-  return Item;
+  return Potion;
 };
