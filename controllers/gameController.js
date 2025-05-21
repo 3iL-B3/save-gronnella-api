@@ -1,5 +1,5 @@
-const { PlayerCharacter } = require("../models");
 const characterRepository = require("../repositories/characterRepository");
+const playerCharacterRepository = require("../repositories/playerCharacterRepository");
 
 exports.selectCharacter = async (req, res) => {
   const userId = req.user.id;
@@ -12,22 +12,18 @@ exports.selectCharacter = async (req, res) => {
       return res.status(404).json({ error: "Personnage introuvable" });
     }
 
-    // Astuce : Vérifie qu'un PlayerCharacter n'existe pas déjà pour cet utilisateur
-    const existing = await PlayerCharacter.findOne({ where: { userId } });
+    // Vérifier si le joueur a déjà un personnage
+    const existing = await playerCharacterRepository.findByUserId(userId);
     if (existing) {
       return res
         .status(400)
-        .json({ error: "Ce joueur a déjà un personnage actif." });
+        .json({ error: "Ce joueur a déjà un personnage." });
     }
 
-    const playerCharacter = await PlayerCharacter.create({
+    const playerCharacter = await playerCharacterRepository.createFromTemplate(
       userId,
-      characterId: character.id,
-      health: character.healthMax,
-      mana: character.manaMax,
-      fortune: character.fortuneBase,
-    });
-
+      character
+    );
     res.status(201).json(playerCharacter);
   } catch (err) {
     console.error("Erreur dans selectCharacter:", err);
